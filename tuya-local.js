@@ -92,7 +92,7 @@ module.exports = function(RED) {
 
 		device.on('error', error => {
 			this.status({fill:"red",shape:"ring",text:"error: " + error});
-			node.warn(error + " device: " + this.Name);
+			node.error(error + " device: " + this.Name);
 			if (error.toString().includes("Error from socket")){
 				try	{
 					node.log("error: Trying to clear a possible timeout timer for device " + this.Name )
