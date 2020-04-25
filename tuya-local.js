@@ -24,7 +24,7 @@ module.exports = function(RED) {
 		function connectToDevice(timeout,req) {
 			device.find({'options': {'timeout':timeout}}).then( () => {
 				node.status({fill:"yellow",shape:"dot",text:"connecting"});
-				node.log(req);
+				// node.log(req);
 				device.connect().then( () => {
 				}, (reason) => { 
 					node.status({fill:"red",shape:"ring",text:"failed: " + reason});
@@ -95,7 +95,7 @@ module.exports = function(RED) {
 			// node.error(error + " device: " + this.Name);
 			if (error.toString().includes("Error from socket")){
 				try	{
-					node.log("error: Trying to clear a possible timeout timer for device " + this.Name )
+					// node.log("error: Trying to clear a possible timeout timer for device " + this.Name )
 					clearTimeout(timeout)	
 				} catch(e) {
 					node.log("error: No timeout defined, device " + this.Name + " is probably not powered")
